@@ -1,0 +1,66 @@
+# Site
+name: "www.ijuned.com"
+title: "www.ijuned.com"
+description: "Good for Nothing"
+url: "https://www.ijuned.com/"
+logo: './assets/images/logo.png'
+favicon: './assets/images/logo.png'
+baseurl: ''
+#google_analytics: 'UA-46278016-1'
+disqus: 'junaid18183'
+#mailchimp-list: '#'
+include: ["_pages"]
+permalink: /:title/
+
+
+# Authors
+authors:
+  juned:
+    name: juned
+    display_name: Juned Memon
+    #gravatar: c6e17184def551ea0b4528e36ad28496
+    avatar: 'assets/images/avatar.png'
+    email:  junaid18183@gmail.com
+    web: https://www.ijuned.com
+    twitter: https://twitter.com/junaid18183
+    description: "Good for nothing"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+    
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+    
+# Pagination 
+paginate: 21
+paginate_path: /page:num/
+    
+# Other
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# Adsense (change to "enabled" to activate, also your client id and ad slot. Create a new ad unit from your Adsense account to get the slot.)
+adsense: "disabled"
+adsense-data-ad-client: ""
+adsense-data-ad-slot: ""
+
+# Lazy Images ("enabled" or "disabled")
+lazyimages: "disabled"
+
+exclude: [README.md, Gemfile, Gemfile.lock]

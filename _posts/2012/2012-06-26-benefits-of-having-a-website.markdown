@@ -1,0 +1,35 @@
+---
+layout: post
+title: Benefits Of Having A Website
+date: 2012-06-26 13:13:00.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  blogger_blog: ijuned.blogspot.com
+  blogger_7553295648c4d8ebded8b8484926da00_permalink: '4450987941098408826'
+---
+<div dir="ltr" style="text-align:left;"><span style="font-family:Verdana;"><span style="font-family:Verdana;"><span style="text-shadow:red left;"><b>Some of the goals that can be achieved by launching a website include the following:</b></span></span></span></p>
+<p><b>1. Far Cheaper and Much More Flexible Than Print Advertising</b><br />The  Internet is extremely different from print advertising in that space is  cheap, your advertisement is accessible for a longer period of time,  the content can be changed without having to ask someone to do it for  you (if you use <span class="IL_AD" id="IL_AD5">a content management system<span class="IL_AD_ICON"></span></span>) and you can potentially reach a wider <span class="IL_AD" id="IL_AD9">audience<span class="IL_AD_ICON"></span></span>.</p>
+<p>This  is not to say that you should not use other forms of advertising at  all   You can use it to entice people to visit your website and find out  about <span class="IL_AD" id="IL_AD12">your company<span class="IL_AD_ICON"></span></span> and potentially open two-way communication between the potential customer and a <span class="IL_AD" id="IL_AD3">sales person<span class="IL_AD_ICON"></span></span>.</p>
+<p><b>2. Market Expansion</b><br />The  Internet has allowed businesses to break through the geographical  barriers and become accessible, virtually, from any country in the world  by a potential customer that has Internet access.</p>
+<p><b>3. Diversify Revenue Streams</b><br />A website is not just a medium for representation of your company,  it is a form of media from which everybody can acquire information. You  can use this media to sell advertising space to other businesses.</p>
+<p>A  recent trend has risen where businesses feature their very own  directory of complimentary services, where the visitor can search for  information on a business that will enhance the use of your service. The  business sells complimentary businesses a listing in their directory. </p>
+<p>A good example is a catering company featuring a directory with businesses such as event co-coordinators, electronic <span class="IL_AD" id="IL_AD8">equipment rental<span class="IL_AD_ICON"></span></span> companies, etc.</p>
+<p><b>4. 24 7 365</b><br />No  more turning customers away when its time to close shop, putting up a  note saying  closed for public holiday , or leaving an irritating  message on your <span class="IL_AD" id="IL_AD7">answering service<span class="IL_AD_ICON"></span></span> specifying your <span class="IL_AD" id="IL_AD6">trading hours<span class="IL_AD_ICON"></span></span>   tell them to visit your website for information they are looking for. </p>
+<p><b>5. Offer Convenience</b><br />It  is far more convenient for a person to research a product on the  Internet than it is to get in a car, drive somewhere and look for or ask  someone for information on a product. Also, a potential customer won t  have to judge a call centre agent to determine whether he/she has their  best interests in mind, or just wants to make a sale.</p>
+<p>The  potential customer can visit your website whenever they like in their  own privacy and comfort, without the stresses and distractions that <span class="IL_AD" id="IL_AD11">exist<span class="IL_AD_ICON"></span></span> in the  real world .<br />Your  website is a self-service medium   for example, instead of having to  wait in a long cue to pay your TV License, you can now do it  electronically through the TV License website.</p>
+<p><b>6. Add Value and Satisfaction</b><br />By  offering convenience, a point of reference and that touch of  individualized customer service, you ultimately add value to your  offering and your customers experience a higher level of satisfaction.</p>
+<p>Your  website can add value in other ways too, by featuring tips, advice and  general interest content you can  entertain  your customers. This will  also help them remember you better.</p>
+<p><b>7. Standardize Sales Performance</b><br />By  looking at which approached / pitches have worked in the past and those  which have not, you can produce the ultimate pitch and use it with your  website, so that you use it on every customer. No more training of  sales people and waiting for them to get a feel for your line of trade.</p>
+<p><b>8. Improve credibility</b><br />A  website gives you the opportunity to tell potential customers what you  are about and why you deserve their trust and confidence. In fact, many  people <span class="IL_AD" id="IL_AD10">use the internet<span class="IL_AD_ICON"></span></span> for pre-purchase research so that they can determine for themselves  whether a particular supplier or brand is worthy of their patronage, and  won t take them for a ride.<br />The Internet also allows for Viral  Marketing   where your website visitors spread positive word-of-mouth  about your business - your customers do your marketing!</p>
+<p><b>9. Promote your  Brick  n  Mortar  Presence</b><br />Getting  lost trying to find a place can be frustrating for a potential  customer. You can publish what they call a  dummy map  on your website,  which shows directions and landmarks graphically, and the potential  customer can print it out when looking for your  Brick  n  Mortar   premises.</p>
+<p>You might advertise a promotion on your website  encouraging the visitor to visit your  Brick  n  Mortar  premises  (e.g..  At a branch near you! ).<br />Also, if you recently moved to a new  location, you will have to wait for the next 'phone directory to come  out before people figure out where you currently are. Because a website  is flexible   you can change the content as you like   you can change  you contact details instantly and lower the risk of losing customers  when moving to a new location.</p>
+<p><b>10. Growth Opportunity</b><br />A website serves as a great place to refer <span class="IL_AD" id="IL_AD2">potential investors<span class="IL_AD_ICON"></span></span> to, to show them what your company is about, what it has achieved and what it can achieve in future.</p>
+<p><b>11. Two-Way Communicative Marketing</b><br />Customers can quickly and easily give feedback on your product and/or marketing approach. </p>
+<p><b>12. Cheap Market Research</b><br />You can use features on your website such as visitor polls, <span class="IL_AD" id="IL_AD1">online surveys<span class="IL_AD_ICON"></span></span> and your <span class="IL_AD" id="IL_AD4">website statistics<span class="IL_AD_ICON"></span></span> to find out what your customers like more and how they feel about  certain aspects of your business to determine how you can improve your  product and the way you do business.</p>
+<p>Website statistics show you  how much traffic your website receives, how the visitor got to your  website and where, geographically, the visitor is from.</p></div>

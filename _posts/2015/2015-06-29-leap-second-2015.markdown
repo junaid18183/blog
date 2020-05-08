@@ -1,0 +1,69 @@
+---
+layout: post
+title: Leap Second 2015
+date: 2015-06-29 11:09:59.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  is_reblog: '1'
+  post_id: '356'
+  blog_id: '63346626'
+  reblog_snapshot: "O:8:\"stdClass\":7:{s:5:\"title\";s:16:\"Leap Second 2015\";s:4:\"type\";s:4:\"post\";s:9:\"mime_type\";s:0:\"\";s:6:\"format\";b:0;s:12:\"modified_gmt\";s:19:\"2015-05-19
+    18:50:52\";s:9:\"permalink\";s:62:\"https://marksmithdba.wordpress.com/2015/05/19/leap-second-2015\";s:7:\"content\";s:4283:\"<div
+    class=\"reblogged-content\">\n\nL'Observatoire de Paris <a href=\"http://hpiers.obspm.fr/eoppc/bul/bulc/\">has
+    decided that there will be a \"leap second\" on June 30th, 2015</a>. Â At 23:59:60
+    on this date, an additional second will be \"inserted\" into UTC (Coordinated
+    Universal Time) to take into account the slightly irregular rotation of our planet.\r\n\r\nThe
+    last \"leap second\" was on June 30th, 2012, when a bunch of servers running Linux
+    had problems (including, and not limited to, Qantas Airways, reddit and anything
+    running Hadoop).\r\n\r\nThis year, Google and Amazon both plan to implement a
+    \"leap smear\" whereby they will add the \"leap second\" over an extended period
+    on June 30th.\r\n\r\nBe aware that <a href=\"https://aws.amazon.com/blogs/aws/look-before-you-leap-the-coming-leap-second-and-aws/\">a
+    number of AWS services are affected</a> and <em><span style=\"text-decoration:underline;\">resolving
+    issues with your EC2 instances is your responsibility</span>.</em>\r\n \r\n\r\n<strong><span
+    style=\"text-decoration:underline;\">The \"Leap Second\" and Oracle</span></strong>\r\nThe
+    Oracle database requires no patches and has no problem with the \"leap second\"
+    changes on the O/S level.\r\n\r\nNo action is required for Exadata servers which
+    are NOT running 12.1.2.1.0. Â If you ARE running this version, you will need to
+    follow MOS noteÂ 1986986.1 to update your NTP configuration.\r\n \r\n\r\n<strong><span
+    style=\"text-decoration:underline;\">Linux Servers</span></strong>\r\nHowever,
+    any derivative of Red Hat Enterprise Linux (including Oracle Enterprise Linux,
+    Oracle Unbreakable Enterprise Kernel and Asianux) versions 4.4 through 6.2, using
+    kernel versions 2.4 to 2.6.39, may be affected. Â This applies to both baremetal
+    or virtualized environments.\r\n\r\nIn MOS 1472421.1, Oracle state that impacted
+    servers may become unresponsive sometime before the \"leap second\" on June 30th,
+    with the following seen in various logs (system, console, netconsole, etc):\r\n \r\n<blockquote>INFO:
+    task kjournald:1119 blocked for more than 120 seconds.\r\n\"echo 0 &gt; /proc/sys/kernel/hung_task_timeout_secs\"
+    disables this message.\r\nkjournald D ffff880028087f00 0 1119 2 0x00000000\r\nffff8807ac15dc40
+    0000000000000246 ffffffff8100e6a1 ffffffffb053069f\r\nffff8807ac22e140 ffff8807ada96080
+    ffff8807ac22e510 ffff880028073000\r\nffff8807ac15dcd0 ffff88002802ea60 ffff8807ac15dc20
+    ffff8807ac22e140</blockquote>\r\n \r\nAlternatively, Java applications may suddenly
+    start to use 100% of the CPU with the event \"<em>Leap second insertion causes
+    futex to repeatedly timeout</em>\".\r\n\r\nThe primary workaround is to stop the
+    NTP service, reset the system clock and restart the NTP service:\r\n \r\n<blockquote>/etc/init.d/ntpd
+    stop\r\ndate -s \"`date`\"\r\n/etc/init.d/ntpd start</blockquote>\r\n \r\n\r\nAn
+    additional workaround is to reboot the server.\r\n \r\n\r\n<strong><span style=\"text-decoration:underline;\">Oracle
+    Enterprise Manager</span></strong>\r\nPer MOS 1472651.1, any version of OEM from
+    10.2.0.5 to 12c running on Linux may see the OEM agent or the OMS service consume
+    excessive CPU on or around \"leap seconds\".\r\n\r\nSuggested workarounds are
+    identical to the Linux servers (reset the system clock or reboot the server).\r\n \r\n\r\n<strong><span
+    style=\"text-decoration:underline;\">Oracle Clusterware on Solaris Servers</span></strong>\r\nPer
+    MOS 759143.1, servers running Solaris 5.8 to 5.10 and running Oracle Clusterware
+    10.1 to 11.1 may suffer a node reboot unless they have the required patches.\r\n\r\nThe
+    workaround for this issue is to configure the local xntpd daemon to disable PLL
+    mode and enable skewing or apply Oracle Clusterware patch bundles / MLRs and increase
+    the oprocd daemon timeout margin appropriately.\r\n \r\n\r\n<span style=\"text-decoration:underline;\"><strong>References</strong></span>\r\n<ul>\n<li>Leap
+    seconds (extra second in a year) and impact on the Oracle database. (Doc ID 730795.1)</li>\r\n\t<li>Leap
+    Second Time Adjustment (e.g. on June 30, 2015 at 23:59:59 UTC) and Its Impact
+    on Exadata Database Machine (Doc ID 1986986.1)</li>\r\n\t<li>Enterprise Manager
+    Management Agent or OMS CPU Use Is Excessive near Leap Second Additions on Linux
+    (Doc ID 1472651.1)</li>\r\n\t<li>NTP leap second event causing Oracle Clusterware
+    node reboot (Doc ID 759143.1)</li>\r\n\t<li>Leap Second Hang - CPU Can Be Seen
+    at 100% (Doc ID 1472421.1)</li>\r\n</ul>\r\n </div>\";}"
+---
+

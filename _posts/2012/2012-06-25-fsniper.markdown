@@ -1,0 +1,23 @@
+---
+layout: post
+title: fsniper
+date: 2012-06-25 12:26:00.000000000 +05:30
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  blogger_blog: ijuned.blogspot.com
+  blogger_7553295648c4d8ebded8b8484926da00_permalink: '2360918060843422768'
+---
+<div dir="ltr" style="text-align:left;">
+<div>Recently was looking for a utility that will monitor particular  directory for specific files and do some action on it once it find such  file. for example trigger a script once the logs are generated.</p>
+<p>and found an extremely handy tool named "FSNIPPER"</div>
+<div class="quoteheader"></div>
+<blockquote class="tr_bq"><div class="quote">fsniper is a utility that waits for a file to be changed, then executes a command on that file.</div>
+</blockquote>
+<p><span>check its </span><a href="http://files.minuslab.net/doc.html"><span class="IL_AD" id="IL_AD3">documentation<span class="IL_AD_ICON"></span></span> </a><span>, very easy to setup and use ..</span></p>
+</div>
