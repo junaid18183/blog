@@ -2,9 +2,9 @@
 layout: post
 title: Python MySQLdb vs mysql-connector query performance
 author: juned
-categories: [MYSQL,Python]
+categories: [MYSQL]
 tags: [MYSQL,Python,Link]
-image: assets/images/linux.jpg
+image: assets/images/mysql.jpg
 featured: false
 hidden: false
 comments: false

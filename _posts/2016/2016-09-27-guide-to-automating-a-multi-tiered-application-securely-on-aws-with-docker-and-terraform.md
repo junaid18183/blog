@@ -2,7 +2,7 @@
 layout: post
 title: Guide to automating a multi-tiered application securely on AWS with Docker and Terraform
 author: juned
-categories: [Network,AWS,Docker]
+categories: [Docker]
 tags: [Network,AWS,Docker,Link]
 image: assets/images/docker.jpg
 featured: false

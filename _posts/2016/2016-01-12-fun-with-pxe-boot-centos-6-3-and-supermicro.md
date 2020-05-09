@@ -2,8 +2,8 @@
 layout: post
 title: Fun with PXE boot Centos 6.3 and SuperMicro
 author: juned
-categories: [Linux,Networking]
-tags: [Linux]
+categories: [Linux]
+tags: [Linux,Networking]
 image: assets/images/linux.jpg
 featured: true
 hidden: false

@@ -2,9 +2,9 @@
 layout: post
 title: 'Snakebite: a pure Python HDFS client'
 author: juned
-categories: [HDFS,Python]
+categories: [Python]
 tags: [HDFS,Python,Link]
-image: assets/images/docker.jpg
+image: assets/images/python.jpg
 featured: false
 hidden: false
 comments: false

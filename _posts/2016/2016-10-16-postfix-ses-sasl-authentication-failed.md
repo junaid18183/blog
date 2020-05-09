@@ -2,7 +2,7 @@
 layout: post
 title: 'Postfix + SES : SASL authentication failed'
 author: juned
-categories: [Linux,AWS]
+categories: [Linux]
 tags: [Linux,AWS,Link]
 image: assets/images/linux.jpg
 featured: false

@@ -2,7 +2,7 @@
 layout: post
 title: The architecture of clustering Graphite
 author: juned
-categories: [Monitoring,Graphite]
+categories: [Monitoring]
 tags: [Monitoring,Graphite,Link]
 image: assets/images/graphite.jpg
 featured: false
