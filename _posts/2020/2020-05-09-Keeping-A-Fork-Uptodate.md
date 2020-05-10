@@ -53,6 +53,7 @@ git push --force-with-lease origin master
 ```
 git config --global format.signoff true
 ```
+Once you add this you can 
 
 ### 7. Sent a PR to the original repository
 

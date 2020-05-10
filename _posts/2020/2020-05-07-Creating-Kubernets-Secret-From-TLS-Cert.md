@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Creating-Kubernets-Secret-From-TLS-Cert.md"
-description: "Creating-Kubernets-Secret-From-TLS-Cert.md"
+title:  "Creating-Kubernets-Secret-From-TLS-Cert"
+description: "Creating-Kubernets-Secret-From-TLS-Cert"
 author: juned
 categories: [ k8s, faas ]
 tags: [k8s]
@@ -16,8 +16,6 @@ hidden: true
 # Create the TLS cert
 
 Create the TLS cert first. I use `mkcert` tool for that. Which is very easy to use.
-
-kubeless
 
 ```
 $ mkdir /tmp/certs/
