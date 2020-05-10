@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Keeping a Git Fork Upto date"
-description: "Keeping a Git Fork Upto date"
+title:  "Title"
+description: "Title"
 author: juned
 categories: [ git ]
 tags: [git]
