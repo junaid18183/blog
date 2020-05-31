@@ -9,6 +9,7 @@ image: assets/images/k8s.jpg
 featured: true
 hidden: true
 #rating: 4.5
+comments: true
 ---
 
 # Creating Kubernets Secret from TLS certificate
