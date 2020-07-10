@@ -7,7 +7,7 @@ categories: [k8s]
 tags: [k8s]
 image: assets/images/k8s.jpg
 description: "ModSecurity Web Application Firewall in kubernetes Nginx Ingress controller"
-featured: false
+featured: true
 hidden: true
 comments: true
 #rating: 4.5
