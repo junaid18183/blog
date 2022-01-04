@@ -22,7 +22,7 @@ The gist of the pipeline is this [workflow](https://github.com/junaid18183/sampl
 First three  steps are pretty obvious, we are 
 
 - getting the code via checkout action
-- Logging into the Github Container Registry ( the GHCR_ACCESS_TOKEN is the secret created in the repo containing my Personal Access Token )
+- Logging into the Github Container Registry ( the GHCR_ACCESS_TOKEN is the secret created in the repo containing my Personal Access Token ) - The `GHCR_ACCESS_TOKEN` is not needed as suggested by @noelgeorgi . We can add the write permission in jobs.build.permissions.packages and remove the PAT. FYI  We just need add the our repository in the packages `Manage Actions access` setting so that the token can write to it.
 - Building and Pushing the image to our registry.
 
 - Next we are creating the SBOM using the [anchore/sbom-action](https://github.com/anchore/sbom-action)  we are also creating artefact  named `sbom.spdx` so that any following job can consume it  and its also available in github workflow run outputs.
