@@ -3,3 +3,4 @@ _site
 .DS_Store
 _vendor
 notes.txt
+.jekyll-cache/
