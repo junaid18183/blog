@@ -470,4 +470,4 @@ Created: 2022-01-04T07:30:50Z
 ....
 ```
 
-We can automate all these steps in the CI pipeline to achieve the [SLSA](https://slsa.dev/spec/v0.1/levels)
+In [PART2](https://https://www.ijuned.com/Signing-images-and-creating-SBOM-using-cosign-pipeline/) we will achive the same steps in a CI pipeline using the github actions.
