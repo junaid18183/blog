@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "SOPS with Azure KeyVault secret and AKS AAD Pod Identity"
@@ -13,7 +12,7 @@ hidden: true
 
 # SOPS with Azure KeyVault secret and AKS AAD Pod Identity
 
-We want to achieve Gitops with FLUX in Azure AKS, storing the encrypted secrets in git repo using Mozilla's [SOPS](https://github.com/mozilla/sops).
+We want to achieve Gitops with FLUX in Azure AKS, storing the encrypted secrets in git repo using Mozilla's [SOPS](https://github.com/mozilla/sops).
 
 The obvious problem we have to solve is  enable the flux controller pod to decrypt the secrets encrypted using the Azure key vault , we will use the AAD pod Identity for this.
 
