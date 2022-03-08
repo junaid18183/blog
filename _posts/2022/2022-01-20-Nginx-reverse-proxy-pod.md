@@ -21,39 +21,49 @@ Create
 1. ConfigMap with Nginx Proxy configurations
 2. Nginx Deployment
 3. Nginx Service - I am using node port but we can change based on the requirement.
+4. To add the Grafana as an IFRAME in another HTML, make sure to edit the grafana.ini file and add 
+```
+[security]
+allow_embedding = true
+```
 
 ```
+---
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: nginx-conf
+  namespace: loki
 data:
-  proxy.conf: |-
+  default.conf: |-
     server {
       listen 80 default_server;
       server_name _;
       location / {
-                    proxy_set_header Host $host;
-                    proxy_set_header Authorization "Basic YWRtaW46cHJvbS1vcGVyYXRvcg=="; # to generate the token use this - echo -n "admin:admin" | base64 -w 0
-                    proxy_set_header X-Real-IP $remote_addr;
-                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                    proxy_pass https://grafana.ijuned.com;
-                    proxy_ssl_verify off;
-                    proxy_ssl_server_name on;
-                    proxy_hide_header X-Frame-Options;
-                    add_header X-Frame-Options "ALLOWALL";
-                    proxy_set_header X-Forwarded-Proto $scheme;
-                    proxy_pass_request_headers on;
-                    proxy_http_version 1.1;
-                    proxy_set_header Upgrade $http_upgrade;
+              proxy_set_header Host $host;
+              proxy_set_header Authorization "Basic YWRtaW46dVpONWV1N2RkN0tQd2FuSTQ0MWJCUGpvdWRKOHc3NEVHcTU3OTdYNg=="; # to generate the token use this - echo -n "admin:admin" | base64 -w 0
+              proxy_pass_header Authorization;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_pass http://grafana.ijuned.com:80/;
+              proxy_ssl_verify off;
+              proxy_ssl_server_name on;
+              proxy_hide_header X-Frame-Options;
+              add_header X-Frame-Options "ALLOWALL";
+              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_pass_request_headers on;
+              proxy_http_version 1.1;
+              proxy_set_header Upgrade $http_upgrade;
       }
+      
     }
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana-proxy
+  namespace: loki
 spec:
   replicas: 1
   selector:
@@ -69,11 +79,11 @@ spec:
         configMap:
           name: nginx-conf
           items:
-            - key: proxy.conf
-              path: proxy.conf
+            - key: default.conf
+              path: default.conf
       containers:
         - name: grafana-proxy
-          image: docker.io/library/nginx:latest
+          image: docker.io/library/nginx:1.21.6
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -96,8 +106,8 @@ spec:
                   fieldPath: status.podIP
           volumeMounts:
             - name: nginx-conf
-              mountPath: /etc/nginx/conf.d/proxy.conf 
-              subPath: proxy.conf      
+              mountPath: /etc/nginx/conf.d/default.conf 
+              subPath: default.conf      
 
 ---
 apiVersion: v1
@@ -106,17 +116,17 @@ metadata:
   labels:
     app: grafana-proxy
   name: grafana-proxy
-  namespace: default
+  namespace: loki
 spec:
   ipFamilies:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
   - name: http
-    nodePort: 31973
     port: 80
   selector:
     app: grafana-proxy
-  type: NodePort
+  type: ClusterIP
+
 
 ```
