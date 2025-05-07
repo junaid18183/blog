@@ -2,7 +2,7 @@
 name: "www.ijuned.com"
 title: "www.ijuned.com"
 description: "Good for Nothing"
-url: "https://www.ijuned.com/"
+url: "https://junaid18183.github.io/blog/"
 logo: './assets/images/logo.png'
 favicon: './assets/images/logo.png'
 baseurl: ''
@@ -21,7 +21,7 @@ authors:
     #gravatar: c6e17184def551ea0b4528e36ad28496
     avatar: 'assets/images/avatar.png'
     email:  junaid18183@gmail.com
-    web: https://www.ijuned.com
+    web: https://junaid18183.github.io/
     twitter: https://twitter.com/junaid18183
     description: "Good for nothing"
 
