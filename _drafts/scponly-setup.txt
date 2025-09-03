@@ -1,0 +1,564 @@
+*** 
+**** Gl@@AdsNoW#022
+
+root@me:/home/chroot# chown sftp_arun:sftp_arun /home/chroot/.ssh
+root@me:/home/chroot# su -  sftp_arun
+sftp_arun@me:~$  ssh-keygen  -t dsa
+sftp_arun@me:~$  ssh-keygen  -t dsa
+Generating public/private dsa key pair.
+Enter file in which to save the key (/home/chroot/.ssh/id_dsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/chroot/.ssh/id_dsa.
+Your public key has been saved in /home/chroot/.ssh/id_dsa.pub.
+The key fingerprint is:
+e9:bf:ca:5f:71:4c:fc:5b:3f:3c:71:83:b9:1d:03:ac sftp_arun@me.arun.world
+The key's randomart image is:
++--[ DSA 1024]----+
+|                 |
+|            ..   |
+|             oo  |
+|         .  .o+. |
+|        S  E.oo=+|
+|       .     o+ X|
+|        .   .. *.|
+|       . . .    o|
+|        oo+.     |
++-----------------+
+sftp_arun@me:~$ ll .ssh/
+ll: command not found
+sftp_arun@me:~$ ls -l .ssh/
+total 8
+-rw------- 1 sftp_arun sftp_arun 668 2010-07-08 16:15 id_dsa
+-rw-r--r-- 1 sftp_arun sftp_arun 613 2010-07-08 16:15 id_dsa.pub
+sftp_arun@me:~$
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+root@me:/home/chroot# sftp  -o "IdentityFile /home/arunb/.ssh/id-sftp_arun"  sftp_arun@localhost
+Connecting to localhost...
+sftp> pwd
+Remote working directory: /
+sftp> ls
+dev  etc  lib  usr  var  
+sftp> quit
+root@me:/home/chroot# 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+root@me:/home/arunb# sftp  -o "IdentityFile /tmp/id_rsa"  scponly@localhost
+Connecting to localhost...
+Connection closed
+root@me:/home/arunb# 
+
+[root@tiber src]# wget -c ftp://ftp.muug.mb.ca/mirror/fedora/epel/5/x86_64/scponly-4.8-1.el5.x86_64.rpm
+--2010-07-07 05:19:00--  ftp://ftp.muug.mb.ca/mirror/fedora/epel/5/x86_64/scponly-4.8-1.el5.x86_64.rpm
+           => `scponly-4.8-1.el5.x86_64.rpm'
+Resolving ftp.muug.mb.ca... 130.179.31.46
+Connecting to ftp.muug.mb.ca|130.179.31.46|:21... connected.
+Logging in as anonymous ... Logged in!
+==> SYST ... done.    ==> PWD ... done.
+==> TYPE I ... done.  ==> CWD /mirror/fedora/epel/5/x86_64 ... done.
+==> SIZE scponly-4.8-1.el5.x86_64.rpm ... 34690
+==> PASV ... done.    ==> RETR scponly-4.8-1.el5.x86_64.rpm ... done.
+Length: 34690 (34K)
+
+100%[===================================================================================================================>] 34,690      3.44K/s   in 9.5s    
+
+2010-07-07 05:19:14 (3.57 KB/s) - `scponly-4.8-1.el5.x86_64.rpm' saved [34690]
+
+[root@tiber src]# rpm -ivh scponly-4.8-1.el5.x86_64.rpm 
+warning: scponly-4.8-1.el5.x86_64.rpm: Header V3 DSA signature: NOKEY, key ID 217521f6
+Preparing...                ########################################### [100%]
+   1:scponly                ########################################### [100%]
+[root@tiber src]# rpm -qa | grep scponly
+scponly-4.8-1.el5
+[root@tiber src]# rpm -ql scponly-4.8-1.el5
+/etc/scponly
+/etc/scponly/debuglevel
+/usr/bin/scponly
+/usr/sbin/scponlyc
+/usr/share/doc/scponly-4.8
+/usr/share/doc/scponly-4.8/AUTHOR
+/usr/share/doc/scponly-4.8/BUILDING-JAILS.TXT
+/usr/share/doc/scponly-4.8/CHANGELOG
+/usr/share/doc/scponly-4.8/CONTRIB
+/usr/share/doc/scponly-4.8/COPYING
+/usr/share/doc/scponly-4.8/INSTALL
+/usr/share/doc/scponly-4.8/README
+/usr/share/doc/scponly-4.8/SECURITY
+/usr/share/doc/scponly-4.8/TODO
+/usr/share/man/man8/scponly.8.gz
+[root@tiber src]# 
+
+password - 1234
+
+[root@tiber src]# chsh -s /usr/bin/scponly sftp_prod
+
+
+[root@tiber src]# ls -ld /home/sftp_prod/
+drwx------ 3 sftp_prod sftp_prod 4096 Jul  7 05:18 /home/sftp_prod/
+[root@tiber src]# 
+
+
+
+[root@appmon2 ~]# sftp sftp_prod@10.0.4.236
+Connecting to 10.0.4.236...
+sftp_prod@10.0.4.236's password: 
+sftp> pwd
+Remote working directory: /home/sftp_prod
+sftp> ls
+sftp> ls /
+/bin             /boot            /dev             /etc             /glamadapt_log   /home            /lib             /lib64           /lost+found      
+/media           /misc            /mnt             /net             /opt             /proc            /root            /sbin            /selinux         
+/srv             /sys             /tmp             /usr             /var             
+sftp> 
+
+
+
+[root@tiber src]# ls -ld /home/sftp_prod/
+drwx------ 3 sftp_prod sftp_prod 4096 Jul  7 05:26 /home/sftp_prod/
+[root@tiber src]# chown  root:root -R /home/sftp_prod/
+[root@tiber src]# ll -ld /home/sftp_prod/
+drwx------ 3 root root 4096 Jul  7 05:26 /home/sftp_prod/
+[root@tiber src]# 
+
+[root@tiber src]# wget -c http://ncu.dl.sourceforge.net/project/scponly/scponly-snapshots/scponly-20080308/scponly-20080308.tgz
+--2010-07-07 05:39:24--  http://ncu.dl.sourceforge.net/project/scponly/scponly-snapshots/scponly-20080308/scponly-20080308.tgz
+Resolving ncu.dl.sourceforge.net... 140.115.17.45
+Connecting to ncu.dl.sourceforge.net|140.115.17.45|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 103464 (101K) [application/x-gzip]
+Saving to: `scponly-20080308.tgz'
+
+100%[===================================================================================================================>] 103,464      137K/s   in 0.7s    
+
+2010-07-07 05:39:28 (137 KB/s) - `scponly-20080308.tgz' saved [103464/103464]
+
+[root@tiber src]# 
+
+
+
+[root@tiber scponly-20080308]# ./configure --help
+`configure' configures scponly 4.8 to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version           display version information and exit
+  -q, --quiet, --silent   do not print `checking...' messages
+      --cache-file=FILE   cache test results in FILE [disabled]
+  -C, --config-cache      alias for `--cache-file=config.cache'
+  -n, --no-create         do not create output files
+
+
+[root@tiber scponly-20080308]# ./configure --prefix=/usr/local/scponly  --disable-wildcards  --enable-chrooted-binary
+
+[root@tiber scponly-20080308]#  make 
+
+[root@tiber scponly-20080308]#  make install
+
+
+arunb@me:~$ ssh   sftp_prod@10.0.4.236
+sftp_prod@10.0.4.236's password: 
+
+This account is restricted by rssh.
+Allowed commands: scp 
+
+If you believe this is in error, please contact your system administrator.
+
+Connection to 10.0.4.236 closed.
+arunb@me:~$ 
+
+arunb@me:~$ ssh  scponly@10.0.4.236
+scponly@10.0.4.236's password: 
+Connection to 10.0.4.236 closed.
+arunb@me:~$ 
+
+
+arunb@me:/home/scponly$ ssh   sftp_prod@10.0.4.236
+sftp_prod@10.0.4.236's password: 
+Last login: Wed Jul  7 10:10:22 2010 from 192.168.19.120
+
+This account is restricted by rssh.
+Allowed commands: sftp 
+
+If you believe this is in error, please contact your system administrator.
+
+Connection to 10.0.4.236 closed.
+arunb@me:/home/scponly$ 
+
+
+[root@tiber chroot]# chroot=`sed -ne's/^chrootpath[^=]*=[^"/]*\(\|"\)\([^"]*\).*/\2/p' /etc/rssh.conf`
+[root@tiber chroot]# echo $chroot
+/home/chroot
+[root@tiber chroot]# for f in `ldd /usr/bin/rssh /usr/lib/misc/rssh_chroot_helper /usr/lib/misc/sftp-server /usr/bin/scp | sed -ne's/.*=> \([^ ]*\).*/\1/p' | sort -u | grep -v "^$"`; do echo "Copying $f to ${chroot}${f}";
+> done
+ldd: /usr/lib/misc/rssh_chroot_helper: No such file or directory
+ldd: /usr/lib/misc/sftp-server: No such file or directory
+Copying /lib64/libcom_err.so.2 to /home/chroot/lib64/libcom_err.so.2
+Copying /lib64/libcrypto.so.6 to /home/chroot/lib64/libcrypto.so.6
+Copying /lib64/libcrypt.so.1 to /home/chroot/lib64/libcrypt.so.1
+Copying /lib64/libc.so.6 to /home/chroot/lib64/libc.so.6
+Copying /lib64/libdl.so.2 to /home/chroot/lib64/libdl.so.2
+Copying /lib64/libkeyutils.so.1 to /home/chroot/lib64/libkeyutils.so.1
+Copying /lib64/libnsl.so.1 to /home/chroot/lib64/libnsl.so.1
+Copying /lib64/libpthread.so.0 to /home/chroot/lib64/libpthread.so.0
+Copying /lib64/libresolv.so.2 to /home/chroot/lib64/libresolv.so.2
+Copying /lib64/libselinux.so.1 to /home/chroot/lib64/libselinux.so.1
+Copying /lib64/libsepol.so.1 to /home/chroot/lib64/libsepol.so.1
+Copying /lib64/libutil.so.1 to /home/chroot/lib64/libutil.so.1
+Copying /usr/lib64/libgssapi_krb5.so.2 to /home/chroot/usr/lib64/libgssapi_krb5.so.2
+Copying /usr/lib64/libk5crypto.so.3 to /home/chroot/usr/lib64/libk5crypto.so.3
+Copying /usr/lib64/libkrb5.so.3 to /home/chroot/usr/lib64/libkrb5.so.3
+Copying /usr/lib64/libkrb5support.so.0 to /home/chroot/usr/lib64/libkrb5support.so.0
+Copying /usr/lib64/libnspr4.so to /home/chroot/usr/lib64/libnspr4.so
+Copying /usr/lib64/libnss3.so to /home/chroot/usr/lib64/libnss3.so
+Copying /usr/lib64/libnssutil3.so to /home/chroot/usr/lib64/libnssutil3.so
+Copying /usr/lib64/libplc4.so to /home/chroot/usr/lib64/libplc4.so
+Copying /usr/lib64/libplds4.so to /home/chroot/usr/lib64/libplds4.so
+Copying /usr/lib64/libz.so.1 to /home/chroot/usr/lib64/libz.so.1
+[root@tiber chroot]# 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+root@me:/home/arunb# strace -o /tmp/arun -f -ff -p  3234
+
+root@me:/home/arunb# grep 'No such file or directory' /tmp/arun.3326  | awk -F'(' '{print $2}' | awk -F'"' '{print $2}' > /tmp/okok
+
+root@me:/home/chroot# sftp  sftp_arun@localhost
+Connecting to localhost...
+sftp_arun@localhost's password: 
+sftp> pwd
+Remote working directory: /
+sftp> ll
+Invalid command.
+sftp> ls
+dev  etc  lib  usr  var  
+sftp> 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[root@tiber ~]# cat /etc/rssh.conf
+# This is the default rssh config file
+
+# set the log facility.  "LOG_USER" and "user" are equivalent.
+logfacility = LOG_USER 
+
+# Leave these all commented out to make the default action for rssh to lock
+# users out completely...
+
+#allowscp
+#allowsftp
+#allowcvs
+#allowrdist
+#allowrsync
+
+#############  arun  #############
+allowsftp
+# set the default umask
+umask = 022
+#chrootpath = /usr/sbin/chroot
+chrootpath ="/home/chroot"
+############# *** ###############
+
+# If you want to chroot users, use this to set the directory where the root of
+# the chroot jail will be located.
+#
+# if you DO NOT want to chroot users, LEAVE THIS COMMENTED OUT.
+# chrootpath = /usr/local/chroot
+
+# You can quote anywhere, but quotes not required unless the path contains a
+# space... as in this example.
+#chrootpath = "/usr/local/my chroot"
+
+##########################################
+# EXAMPLES of configuring per-user options
+
+#user=rudy:077:00010:  # the path can simply be left out to not chroot
+#user=rudy:077:00010   # the ending colon is optional
+
+#user=rudy:011:00100:  # cvs, with no chroot 
+#user=rudy:011:01000:  # rdist, with no chroot
+#user=rudy:011:10000:  # rsync, with no chroot
+#user="rudy:011:00001:/usr/local/chroot"  # whole user string can be quoted
+#user=rudy:01"1:00001:/usr/local/chroot"  # or somewhere in the middle, freak!
+#user=rudy:'011:00001:/usr/local/chroot'  # single quotes too
+
+# if your chroot_path contains spaces, it must be quoted...
+# In the following examples, the chroot_path is "/usr/local/my chroot"
+#user=rudy:011:00001:"/usr/local/my chroot"  # scp with chroot
+#user=rudy:011:00010:"/usr/local/my chroot"  # sftp with chroot
+#user=rudy:011:00011:"/usr/local/my chroot"  # both with chroot
+
+# Spaces before or after the '=' are fine, but spaces in chrootpath need
+# quotes.
+#user = "rudy:011:00001:/usr/local/my chroot"  
+#user = "rudy:011:00001:/usr/local/my chroot"  # neither do comments at line end
+
+
+########################################## 
+user ="sftp_prod:022:00010:/home/chroot"
+
+##########################################
+[root@tiber ~]# 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[root@tiber ~]# useradd -d /home/chroot/sftp_prod -s /usr/bin/rssh sftp_prod
+[root@tiber ~]# passwd sftp_prod
+Changing password for user sftp_prod.
+New UNIX password: 
+BAD PASSWORD: it is too short
+Retype new UNIX password: 
+passwd: all authentication tokens updated successfully.
+[root@tiber ~]# 
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+How to configure rssh + chroot for SFTP
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+*** Install RSS Shell ~
+
+[root@tiber chroot]# yum install  rssh
+[root@tiber chroot]# rpm -qa | grep rssh
+rssh-2.3.2-1.2.el5.rf
+[root@tiber chroot]# 
+
+
+*** Your Chroot Setting -
+
+[root@tiber ~]# cat /etc/rssh.conf 
+# This is the default rssh config file
+
+logfacility = LOG_USER 
+######  arun  ########
+allowsftp
+# set the default umask
+umask = 022
+#chrootpath = /usr/sbin/chroot
+chrootpath ="/home/chroot"
+######  end  ########
+
+
+1) Create user ~ 
+
+[root@tiber ~]# mkdir /home/chroot/
+[root@tiber ~]# useradd -d /home/chroot/home/sftp_prod -s /usr/bin/rssh sftp_prod
+[root@tiber ~]# passwd sftp_prod
+
+* Now add following line in "/etc/rssh.conf" file...
+
+user ="sftp_prod:022:00010:/home/chroot/sftp_prod"
+
+*** [root@tiber ~]# tail /etc/passwd
+
+sftp_prod:x:503:503::/home/chroot/home/sftp_prod:/usr/bin/rssh
+
+2) Chroot allow to log via  syslogd ~
+
+add following entry in file "/etc/sysconfig/syslog" and restart syslogd
+
+SYSLOGD_OPTIONS="-m 0  -a /home/chroot/dev/log -a /dev/log"
+
+root@tiber ~]# /etc/init.d/syslog   restart
+
+3) Now setup Chroot ENV - 
+
+[root@tiber ~]# /var/src/glam_rssh_mkchroot.sh  /home/chroot/
+
+[root@tiber chroot]# mknod --mode=600 dev/console c 5 1
+[root@tiber chroot]# mknod --mode=666 dev/null c 1 3
+
+[root@tiber chroot]# /var/src/arun_shared_lib.sh  usr/libexec/openssh/sftp-server
+
+[root@tiber chroot]# cp /lib/libnss_files.so.2 lib/libnss_files.so.2
+[root@tiber chroot]# cp /lib64/libnss_files.so.2 lib64/libnss_files.so.2
+
+4) Test now ~ 
+
+arunb@me:~$ sftp   sftp_prod@10.0.4.236
+Connecting to 10.0.4.236...
+sftp_prod@10.0.4.236's password: 
+sftp> pwd
+Remote working directory: /home/sftp_prod
+sftp> ls
+arun   manoj  mayur  ravi   
+sftp> 
+
+
+sftp> ls /
+/dev    /etc    /home   /lib    /lib64  /usr    
+sftp> 
+
+
+5) Process for New user ~ 
+
+a) [root@tiber chroot]#  useradd -d /home/chroot/home/sftp_tmp -s /usr/bin/rssh  sftp_tmp
+  [root@tiber chroot]# passwd  sftp_tmp
+
+b) Add line in file "/etc/rssh.conf" 
+
+  user ="sftp_tmp:022:00010:/home/chroot"
+
+c) Copy user entry from  /etc/{passwd,group,shadow} files TO CHROOT  {passwd,group,shadow} files ~
+
+NOTE ~ becareful...
+
+[root@tiber chroot]# grep  sftp_tmp /etc/passwd >> /home/chroot/etc/passwd
+[root@tiber chroot]# grep  sftp_tmp /etc/group >> /home/chroot/etc/group 
+[root@tiber chroot]# grep  sftp_tmp /etc/shadow >> /home/chroot/etc/shadow 
+
+[root@tiber ~]# cat /home/chroot/etc/{passwd,group,shadow}
+
+sftp_tmp:x:504:504::/home/chroot/home/sftp_tmp:/usr/bin/rssh
+bin:x:1:bin,daemon
+daemon:x:2:bin,daemon
+sftp_prod:x:503:
+sftp_tmp:x:504:
+bin:*:14797:0:99999:7:::
+daemon:*:14797:0:99999:7:::
+sftp_prod:$1$Ei5oj.yu$P5FDGGI0POxIIv5562BIm/:14798:0:99999:7:::
+sftp_tmp:$1$wZ6Qk3R/$ANRx5mKBB81pjzE/Dr3vK.:14798:0:99999:7:::
+[root@tiber chroot]# 
+
+*** Test it now....
+
+arunb@me:~$ sftp   sftp_tmp@10.0.4.236
+Connecting to 10.0.4.236...
+sftp_tmp@10.0.4.236's password: 
+sftp> pwd
+Remote working directory: /home/sftp_tmp
+sftp> 
+sftp> ls 
+sftp> ls
+1  2  3  a  b  c  
+sftp> pwd
+Remote working directory: /home/sftp_tmp
+sftp> 
+sftp> 
+sftp> ls /
+/dev    /etc    /home   /lib    /lib64  /usr    
+sftp> cd /etc
+sftp> pwd
+Remote working directory: /etc
+sftp> ls
+group          ld.so.cache    ld.so.conf     localtime      nsswitch.conf  passwd         shadow         
+sftp> 
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+sftp>
+sftp> get 1
+Fetching /home/sftp_tmp/1 to 1
+/home/sftp_tmp/1                                                                                                           100%   14     0.0KB/s   00:00    
+sftp> mkdir arun
+sftp> ls
+1     2     3     a     arun  b     c     
+sftp> version
+SFTP protocol version 3
+sftp> rm c
+Removing /home/sftp_tmp/c
+sftp> 
+
+sftp> rm c
+Removing /home/sftp_tmp/c
+sftp> ls
+1     2     3     a     arun  b     
+sftp> 
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ what is required for CHROOT
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+[root@tiber chroot]# pwd
+/home/chroot
+[root@tiber chroot]# ll
+total 24
+drwxr-xr-x 2 root root 4096 Jul  8 07:50 dev
+drwxr-xr-x 2 root root 4096 Jul  8 07:50 etc
+drwxr-xr-x 4 root root 4096 Jul  8 07:51 home
+drwxr-xr-x 2 root root 4096 Jul  8 07:05 lib
+drwxr-xr-x 2 root root 4096 Jul  8 07:28 lib64
+drwxr-xr-x 5 root root 4096 Jul  8 07:05 usr
+[root@tiber chroot]# ll -ld /home/
+drwxr-xr-x 6 root root 4096 Jul  8 08:00 /home/
+[root@tiber chroot]# ll dev/
+total 0
+crw------- 1 root root 5, 1 Jul  8 07:13 console
+srw-rw-rw- 1 root root    0 Jul  8 07:50 log
+crw-rw-rw- 1 root root 1, 3 Jul  8 07:14 null
+[root@tiber chroot]# ll etc/
+total 108
+-rw-r--r-- 1 root root    74 Jul  8 07:55 group
+-rw-r--r-- 1 root root 81321 Jul  8 07:05 ld.so.cache
+-rw-r--r-- 1 root root    28 Jul  8 07:05 ld.so.conf
+-rw-r--r-- 1 root root  3519 Jul  8 07:16 localtime
+-rw-r--r-- 1 root root  1696 Jul  8 07:16 nsswitch.conf
+-rw-r--r-- 1 root root   192 Jul  8 07:55 passwd
+-r-------- 1 root root   180 Jul  8 07:55 shadow
+[root@tiber chroot]# ll lib
+total 48
+-rwxr-xr-x 1 root root 46680 Jul  8 07:28 libnss_files-2.5.so
+lrwxrwxrwx 1 root root    19 Jul  8 07:05 libnss_files.so.2 -> libnss_files-2.5.so
+[root@tiber chroot]# ll lib64
+total 4052
+-rwxr-xr-x 1 root root  139416 Jul  8 07:10 ld-linux-x86-64.so.2
+-rwxr-xr-x 1 root root   10000 Jul  8 07:18 libcom_err.so.2
+-rwxr-xr-x 1 root root 1366176 Jul  8 07:18 libcrypto.so.6
+-rwxr-xr-x 1 root root   48600 Jul  8 07:18 libcrypt.so.1
+-rwxr-xr-x 1 root root 1717800 Jul  8 07:18 libc.so.6
+-rwxr-xr-x 1 root root   23360 Jul  8 07:18 libdl.so.2
+-rwxr-xr-x 1 root root    9472 Jul  8 07:18 libkeyutils.so.1
+-rwxr-xr-x 1 root root  114352 Jul  8 07:18 libnsl.so.1
+-rwxr-xr-x 1 root root   53880 Jul  8 07:28 libnss_files.so.2
+-rwxr-xr-x 1 root root  145824 Jul  8 07:18 libpthread.so.0
+-rwxr-xr-x 1 root root   92736 Jul  8 07:18 libresolv.so.2
+-rwxr-xr-x 1 root root   95464 Jul  8 07:18 libselinux.so.1
+-rwxr-xr-x 1 root root  247496 Jul  8 07:18 libsepol.so.1
+-rwxr-xr-x 1 root root   18152 Jul  8 07:18 libutil.so.1
+[root@tiber chroot]# ll usr/
+total 12
+drwxr-xr-x 2 root root 4096 Jul  8 07:05 bin
+drwxr-xr-x 2 root root 4096 Jul  8 07:05 lib64
+drwxr-xr-x 3 root root 4096 Jul  8 07:05 libexec
+[root@tiber chroot]# ll usr/bin
+total 96
+-rwxr-xr-x 1 root root 33265 Jul  8 07:05 rssh
+-rwxr-xr-x 1 root root 53384 Jul  8 07:05 scp
+[root@tiber chroot]# ll usr/lib64
+total 2664
+-rwxr-xr-x 1 root root  190976 Jul  8 07:18 libgssapi_krb5.so.2
+-rwxr-xr-x 1 root root  153464 Jul  8 07:18 libk5crypto.so.3
+-rwxr-xr-x 1 root root  613896 Jul  8 07:18 libkrb5.so.3
+-rwxr-xr-x 1 root root   35728 Jul  8 07:18 libkrb5support.so.0
+-rwxr-xr-x 1 root root  229272 Jul  8 07:18 libnspr4.so
+-rwxr-xr-x 1 root root 1221496 Jul  8 07:18 libnss3.so
+-rwxr-xr-x 1 root root  119696 Jul  8 07:18 libnssutil3.so
+-rwxr-xr-x 1 root root   17736 Jul  8 07:18 libplc4.so
+-rwxr-xr-x 1 root root   13800 Jul  8 07:18 libplds4.so
+-rwxr-xr-x 1 root root   85608 Jul  8 07:18 libz.so.1
+[root@tiber chroot]# ll usr/libexec
+total 80
+drwxr-xr-x 2 root root  4096 Jul  8 07:05 openssh
+-rwsr-xr-x 1 root root 69892 Jul  8 07:05 rssh_chroot_helper
+[root@tiber chroot]# ll usr/libexec/openssh
+total 56
+-rwxr-xr-x 1 root root 53080 Jul  8 07:05 sftp-server
+[root@tiber chroot]# 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+

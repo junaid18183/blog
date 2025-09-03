@@ -1,0 +1,103 @@
+DB1 -
+[root@instance-00000047 ~]# yum install mysql mysql-server
+
+A RANDOM PASSWORD HAS BEEN SET FOR THE MySQL root USER !
+You will find that password in '/root/.mysql_secret'.
+
+[root@instance-00000047 ~]# cat /root/.mysql_secret
+# The random password set for the root user at Thu Mar 19 03:14:04 2015 (local time): c8RZiJ9N
+
+[root@instance-00000047 ~]# /etc/init.d/mysql status
+ ERROR! MySQL is not running
+[root@instance-00000047 ~]# /etc/init.d/mysql start
+Starting MySQL.. SUCCESS!
+[root@instance-00000047 ~]# /etc/init.d/mysql status
+ SUCCESS! MySQL running (265)
+
+ [root@instance-00000047 ~]# chkconfig mysql on
+ 
+ [root@instance-00000047 ~]# mysql -u root -pc8RZiJ9N
+Warning: Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.6.15
+
+Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+mysql> SET PASSWORD = PASSWORD('junedm');
+
+[root@instance-00000047 ~]# cat .my.cnf
+[client]
+user=root
+password=junedm
+
+#Installtion Complete
+
+# Repeat same steps on DB2
+------------------------------------------------
+Now Create the Database and Table on both the servers ( Dbname = sojourner , Table = inventory)
+If the Master is already set you can copy the dump of database on slave
+------------------------------------------------
+
+# Now Create the Mysql binlog directory ( otherwise deafults to /var/lib/mysql)
+
+[root@instance-00000047 mysql]# pwd
+/var/lib/mysql
+[root@instance-00000047 mysql]# mkdir binary_log
+[root@instance-00000047 mysql]# chown mysql:mysql binary_log
+
+Now create the /etc/.my.cnf file ( mysql-libs rpm installs this file )
+
+[mysqld]
+server-id = 1
+log-bin = /var/lib/mysql/binary_log/mysql-bin.log
+binlog-do-db = sojourner
+binlog-ignore-db = mysql
+binlog_format=mixed
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+
+On Client 
+
+
+
+Create Replication user on Server
+GRANT REPLICATION SLAVE ON *.* TO 'repl'@'10.0.0.%' IDENTIFIED BY 'replication';
+FLUSH PRIVILEGES;
+
+Confirm from slave that repl user can connect 
+[root@instance-00000048 ~]# mysql -h 10.0.0.6 -u repl -preplication
+Warning: Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.6.15-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2013, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CHANGE MASTER TO MASTER_HOST='10.0.0.6',MASTER_USER='repl',MASTER_PASSWORD='replication', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=404;
+
+# Run above command on slave
+# you will get the values from show maser status on master hosts
+
+------------------------------------------------
+For Mater Master Replication 
+
+Add the same my.cnf file on slave ( changing the server id )
+Add the replication user on slave ( so that master can access slave )
+CHANGE MASTER TO MASTER_HOST='10.0.0.7',MASTER_USER='repl',MASTER_PASSWORD='replication', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=120;
+
+and add Change master on ( actual master without above command )
+------------------------------------------------
+

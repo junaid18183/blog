@@ -1,0 +1,58 @@
+How to Create FTP User on app119
+ [root@app119 ~]# useradd -d /mnt/access_logs/datasift -s /sbin/nologin datasift 
+ [root@app119 ~]# chmod  775 /mnt/access_logs/datasift/
+ [root@app119 ~]# cp /etc/vsftpd/user_config/inview  /etc/vsftpd/user_config/datasift
+Verify User Setting
+ [root@app119 ~]# getent  passwd datasift
+  datasift:x:512:512::/mnt/access_logs/datasift:/sbin/nologin
+ [root@app119 ~]# 
+Only Following commands are allowed-
+ [root@app119 ~]# cat /etc/vsftpd/user_config/datasift
+  cmds_allowed=PASS,PASV,LIST,PWD,MKD,STOR,CWD,QUIT,TYPE,FEAT,NOOP,OPTS
+ [root@app119 ~]#
+How to test-
+ [root@app188vm5 ~]# ftp app119
+   Connected to app119.glam.com.
+   220 (vsFTPd 2.0.5)
+   Name (app119:root): datasift
+   331 Please specify the password.
+   Password:
+   230 Login successful.
+   ftp> put arun.txt
+     local: arun.txt remote: arun.txt
+     227 Entering Passive Mode (10,0,1,219,211,124)
+     150 Ok to send data.
+     226 File receive OK.
+     9 bytes sent in 2.3e-05 seconds (3.8e+02 Kbytes/s)
+   ftp> pwd
+     257 "/"
+   ftp> ls
+     227 Entering Passive Mode (10,0,1,219,121,22)
+     150 Here comes the directory listing.
+     -rw-r--r--    1 512      512             9 Nov 30 02:57 arun.txt
+     226 Directory send OK.
+   ftp> bye
+   221 Goodbye.
+ [root@app188vm5 ~]#
+
+Vsftpd Conf file-
+ [root@app119 ~]#  cat /etc/vsftpd/vsftpd.conf
+  anonymous_enable=NO
+  local_enable=YES
+  write_enable=YES
+  local_umask=022
+  dirmessage_enable=YES
+  xferlog_enable=YES
+  connect_from_port_20=YES
+  xferlog_file=/var/log/vsftpd.log
+  xferlog_std_format=YES
+  chroot_list_file=/etc/vsftpd/chroot_list
+  listen=YES
+  pam_service_name=vsftpd
+  userlist_enable=YES
+  tcp_wrappers=YES
+  chroot_local_user=YES
+  user_config_dir=/etc/vsftpd/user_config/
+[root@app119 ~]# 
+
+-Techops
